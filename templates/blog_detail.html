@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blog</title>
+    <link rel="stylesheet" href="{% static 'bootstrap-4.4.1-dist/css/bootstrap-grid.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-4.4.1-dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-4.4.1-dist/css/bootstrap-reboot.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <script src="{% static 'bootstrap-4.4.1-dist/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'bootstrap-4.4.1-dist/js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+<header class="p-3 bg-light border-bottom mb-2">
+    <div class="container">
+        <div class="d-flex flex-wrap align-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <img src="{% static 'image/logo.jpg' %}" alt="" height="40">
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="#" class="nav-link px-2 text-secondary">Hone</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+            </form>
+
+            <div class="text-end">
+                <button type="button" class="btn btn-outline-primary me-2">登录</button>
+                <button type="button" class="btn btn-primary">注册</button>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="container bg-light p-3 rounded">
+    <h2>博客详情</h2>
+    <hr>
+    <div class="mt-2">
+        <img src="{% static 'image/logo.jpg' %}" alt="" class="rounded-circle" height="30" width="30">
+        <span class="ms-2">zzzz</span>
+        <span class="ms-2">发布时间：2023-05-05</span>
+    </div>
+    <hr>
+    <div class="py-2">
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aliquam aperiam asperiores
+        atque
+        autem dicta dignissimos distinctio doloremque ducimus eaque eius eligendi enim est et eum, facilis fuga
+        impedit
+        in incidunt ipsa ipsum iure labore laborum magnam maiores molestiae mollitia nam necessitatibus nihil
+        nostrum
+
+    </div>
+    <hr>
+    <div class="mt-2">
+        <h3>评论</h3>
+        <form action="" method="post">
+            <div class="input-group mt-3">
+                <input type="text" class="form-control" placeholder="请输入评论内容" aria-label="请输入评论内容">
+                <button type="submit" class="btn btn-primary" aria-label="评论">评论</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="mt-2">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item mb-2 d-flex align-items-start">
+                <div class="user-info me-3">
+                    <img src="{% static 'image/logo.jpg' %}" alt="" class="rounded-circle" width="40" height="40">
+                </div>
+                <div class="comment-details w-100">
+                    <div class="username fw-bold pt-2 ">&nbsp;zzz :</div>
+                    <div class="comment-content mt-1">内容</div>
+                    <div class="create-time mt-1 small text-muted">2023-05-05</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</main>
+</body>
+</html>
