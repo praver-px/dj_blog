@@ -15,3 +15,5 @@ def blog_detail(request, blog_id):
 
 def pub_blog(request):
     return render(request, 'pub_blog.html')
+
+
