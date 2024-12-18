@@ -1,41 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>blog</title>
-    <link rel="stylesheet" href="{% static 'bootstrap-4.4.1-dist/css/bootstrap-grid.css' %}">
-    <link rel="stylesheet" href="{% static 'bootstrap-4.4.1-dist/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'bootstrap-4.4.1-dist/css/bootstrap-reboot.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% extends 'base.html' %}
 
-    <script src="{% static 'bootstrap-4.4.1-dist/js/bootstrap.bundle.js' %}"></script>
-    <script src="{% static 'bootstrap-4.4.1-dist/js/bootstrap.min.js' %}"></script>
-</head>
-<body>
-<header class="p-3 bg-light border-bottom mb-2">
-    <div class="container">
-        <div class="d-flex flex-wrap align-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <img src="{% static 'image/logo.jpg' %}" alt="" height="40">
-            </a>
+{% block title %}
+    发布博客
+{% endblock %}
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2 text-secondary">Hone</a></li>
-            </ul>
+{% block main %}
 
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-            </form>
-
-            <div class="text-end">
-                <button type="button" class="btn btn-outline-primary me-2">登录</button>
-                <button type="button" class="btn btn-primary">注册</button>
-            </div>
-        </div>
-    </div>
-</header>
-<main class="container bg-light p-3 rounded">
     <h2>博客详情</h2>
     <hr>
     <div class="mt-2">
@@ -79,7 +49,4 @@
             </li>
         </ul>
     </div>
-
-</main>
-</body>
-</html>
+{% endblock %}
