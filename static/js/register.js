@@ -14,6 +14,22 @@ $(function () {
 
             // 取消按钮的点击事件
             $this.off('click');
+
+            // 发送请求
+            $.ajax('/auth/captcha?email=' + email, {
+                method: 'get',
+                success: function (res) {
+                    if (res['code'] === 200) {
+                        alert("验证码已发送，请注意查收");
+                    } else {
+                        alert(res['msg']);
+                    }
+                },
+                fail: function (error) {
+                    console.log(error)
+                }
+            })
+
             // 倒计时
             let countdown = 60;
             let timer = setInterval(function () {
