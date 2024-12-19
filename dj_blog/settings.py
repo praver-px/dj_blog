@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog',
+    'myauth'
 ]
 
 MIDDLEWARE = [
@@ -45,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'dj_blog.urls'
@@ -74,8 +77,11 @@ WSGI_APPLICATION = 'dj_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'OPTIONS': {
+            'read_default_file': 'my.cnf'
+        }
     }
 }
 

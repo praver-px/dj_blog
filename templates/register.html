@@ -4,6 +4,12 @@
     注册
 {% endblock %}
 
+{% block head %}
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="{% static 'js/register.js' %}"></script>
+{% endblock %}
+
 {% block main %}
     <div class="m-auto" style="max-width: 330px">
         <h1>注册</h1>
@@ -19,8 +25,10 @@
             <div class="mb-3">
                 <label>验证码</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="验证码" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">发送验证码</button>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="验证码" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="captcha-btn">发送验证码</button>
+                    </div>
                 </div>
             </div>
 
