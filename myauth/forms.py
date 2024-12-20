@@ -30,3 +30,9 @@ class RegisterForm(forms.Form):
             raise forms.ValidationError('验证码不匹配')
         captcha_model.delete()
         return captcha
+
+
+class LoginForm(forms.Form):
+    email = forms.EmailField(error_messages={'require': '请输入邮箱', 'invalid': '请输入正确的邮箱'})
+    password = forms.CharField(max_length=20, min_length=6)
+    remember = forms.IntegerField(required=False)

@@ -7,18 +7,37 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.decorators.http import require_http_methods
 
-from myauth.forms import RegisterForm
+from myauth.forms import RegisterForm, LoginForm
 from myauth.models import CaptchaModel
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, login
 
 User = get_user_model()
 
 
 # Create your views here.
 
-
-def login(request):
-    return render(request, 'login.html')
+@require_http_methods(['GET', 'POST'])
+def mylogin(request):
+    if request.method == 'GET':
+        return render(request, 'login.html')
+    else:
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password')
+            remember = form.cleaned_data.get('remember')
+            user = User.objects.filter(email=email).first()
+            if user and user.check_password(password):
+                login(request, user)
+                if not remember:
+                    # 设置过期时间
+                    request.session.set_expiry(0)
+                return redirect('/')
+            else:
+                print('邮箱或密码错误')
+                # form.add_error('email', '邮箱或密码错误')
+                # return render(request, 'login.html', context={'form': form})
+                return redirect(reverse('myauth:login'))
 
 
 @require_http_methods(['GET', 'POST'])
