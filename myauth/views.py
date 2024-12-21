@@ -9,7 +9,7 @@ from django.views.decorators.http import require_http_methods
 
 from myauth.forms import RegisterForm, LoginForm
 from myauth.models import CaptchaModel
-from django.contrib.auth import get_user_model, login
+from django.contrib.auth import get_user_model, login, logout
 
 User = get_user_model()
 
@@ -56,6 +56,11 @@ def register(request):
             print(form.errors)
             return redirect(reverse('myauth:register'))
             # return render(request, 'register.html', context={'form': form})
+
+
+def mylogout(request):
+    logout(request)
+    return redirect('/')
 
 
 def send_email_captcha(request):

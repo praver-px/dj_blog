@@ -8,9 +8,6 @@
     <link rel="stylesheet" href="{% static 'bootstrap-4.4.1-dist/css/bootstrap-reboot.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block head %}{% endblock %}
-
-    <script src="{% static 'bootstrap-4.4.1-dist/js/bootstrap.bundle.js' %}"></script>
-
 </head>
 <body>
 <header class="p-3 bg-light border-bottom mb-2">
@@ -22,8 +19,8 @@
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-                    <li><a href="#" class="nav-link px-2 text-secondary">Hone</a></li>
+                    <li><a href="/" class="nav-link px-2 text-secondary">首页</a></li>
+                    <li><a href="{% url  'blog:pub_blog' %}" class="nav-link px-2 text-secondary">发布</a></li>
                 </ul>
 
             </div>
@@ -33,19 +30,37 @@
                     <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
                 </form>
 
-                <div class="text-end">
-                    <button type="button" class="btn btn-outline-primary me-2">登录</button>
-                    <button type="button" class="btn btn-primary">注册</button>
-                </div>
+                {% if user.is_authenticated %}
+                    <div class="dropdown text-end">
+                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                           data-toggle="dropdown" aria-expanded="false">
+                            <img src="{% static 'image/logo.jpg' %}" alt="mdo" width="32" height="32"
+                                 class="rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu text-small">
+                            <li><span class="dropdown-item" href="#" disabled>{{ user.username }}</span></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'myauth:logout' %}">退出登录</a></li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <div class="text-end">
+                        <a href="{% url 'myauth:login' %}" type="button" class="btn btn-outline-primary me-2">登录</a>
+                        <a href="{% url 'myauth:register' %}" type="button" class="btn btn-primary">注册</a>
+                    </div>
+                {% endif %}
             </div>
-
         </div>
     </div>
 </header>
 <main class="container bg-light p-3 rounded">
-    {% block  main %}{% endblock %}
-
-
+    {% block main %}{% endblock %}
 </main>
+
+<!-- 确保 jQuery 在 bootstrap.bundle.min.js 之前加载 -->
+<script src="{% static 'bootstrap-4.4.1-dist/js/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
